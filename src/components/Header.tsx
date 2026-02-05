@@ -1,50 +1,121 @@
-import heartIcon from "../assets/heart.png";
+import { useState } from "react";
 import shopIcon from "../assets/shopping-cart.png";
 import profilIcon from "../assets/user.png";
 import { useNavigate } from "react-router-dom";
 
-
 const Header = () => {
-   const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const navItems = [
+    { label: "Головна", path: "/" },
+    { label: "Як зробити замовлення?", path: "/Advice" },
+    { label: "Доставка і оплата", path: "/Delivery" },
+    { label: "Контакти", path: "/Contacts" },
+  ];
+
   return (
-    <header className="flex items-center justify-around gap-6 px-10 py-6 bg-[#f6f6f4]">
-      {/* logo */}
-      <div className="text-3xl font-semibold text-gray-500 tracking-widest">Safe<span className="font-extrabold text-black">Pack</span></div>
-      
-      <div className=" flex items-center justify-around gap-6 text-[#678b64] font-bold text-xl  rounded-full">
-           <button onClick={() => navigate("/")} className=" hover:text-[#4a6d47] cursor-pointer">
-             Головна
-           </button>
-           <button onClick={() => navigate("/Catalog")} className=" hover:text-[#41583e] cursor-pointer">
-             Як зробити замовлення?
-           </button>
-           <button onClick={() => navigate("/Catalog")} className=" hover:text-[#41583e] cursor-pointer">
-             Доставка і оплата
-           </button>
-           <button onClick={() => navigate("/Catalog")} className=" hover:text-[#41583e] cursor-pointer">
-             Контакти
-           </button>
+    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur shadow-sm">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 sm:h-20">
+
+        {/* Logo */}
+        <div
+          onClick={() => navigate("/")}
+          className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-500 tracking-widest cursor-pointer"
+        >
+          Safe<span className="font-extrabold text-black">Pack</span>
         </div>
 
-      {/* search */}
-      <input
-        type="text"
-        placeholder="Пошук..."
-        className="w-60 -mr-17 px-4 py-2 border rounded-full text-sm outline-none"
-      />
+        {/* Desktop nav ≥1024px */}
+        <nav className="hidden lg:flex items-center gap-6 lg:gap-8 text-sm lg:text-[17.5px] font-medium text-gray-600">
+          {navItems.map((item) => (
+            <button
+              key={item.label}
+              onClick={() => navigate(item.path)}
+              className="relative hover:text-[#4a6d47] transition after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-[#4a6d47] after:transition-all hover:after:w-full"
+            >
+              {item.label}
+            </button>
+          ))}
+        </nav>
 
-      {/* icons */}
-      <div className="flex gap-6 text-xl">
-        <button className="cursor-pointer">
-            <img src={heartIcon} alt="favorites" className="w-5 h-5" />
-        </button>
-         <button className="cursor-pointer">
-            <img src={shopIcon} alt="shop" className="w-5 h-5" />
-        </button>
-         <button className="cursor-pointer">
-            <img src={profilIcon} alt="profil" className="w-5 h-5" />
-        </button>
+        {/* Icons + Search */}
+        <div className="flex items-center gap-2 sm:gap-4">
+
+          {/* Іконки завжди */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            {[shopIcon, profilIcon].map((icon, index) => (
+              <button
+                key={index}
+                className="p-1.5 sm:p-2 rounded-full hover:bg-gray-100 transition"
+              >
+                <img
+                  src={icon}
+                  alt="icon"
+                  className="w-4 h-4 sm:w-5 sm:h-5"
+                />
+              </button>
+            ))}
+          </div>
+
+          {/* Бургер-меню для <1024px */}
+          <button
+            className="lg:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#4a6d47]"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            <span className="sr-only">Open menu</span>
+            {menuOpen ? (
+              <svg
+                className="w-6 h-6 text-gray-700"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            ) : (
+              <svg
+                className="w-6 h-6 text-gray-700"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            )}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile / Tablet menu <1024px */}
+      {menuOpen && (
+        <div className="lg:hidden bg-white shadow-lg">
+          <div className="px-4 pt-2 pb-4 space-y-1">
+            {navItems.map((item) => (
+              <button
+                key={item.label}
+                onClick={() => {
+                  navigate(item.path);
+                  setMenuOpen(false);
+                }}
+                className="block w-full text-left px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100 transition"
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
     </header>
   );
 };
