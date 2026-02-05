@@ -1,5 +1,5 @@
-import Photo from "../assets/Free_delivery.png"; 
 import { useNavigate } from "react-router-dom";
+
 
 const Hero = () => {
   const navigate = useNavigate();
@@ -7,11 +7,7 @@ const Hero = () => {
   return (
     <div className="relative overflow-hidden bg-gradient-to-b from-[#f6f6f4] to-white">
 
-      {/* blur background */}
-      <div className="absolute md:block -top-32 -left-32 w-96 h-96 bg-[#678b64]/30 rounded-full blur-3xl" />
-      <div className="absolute top-22 right-30 w-120 h-120 bg-[#678b64]/50 rounded-full blur-3xl" />
-
-      <div className="relative max-w-7xl mx-auto px-6 py-4 grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative max-w-7xl mx-auto px-6 py-5 grid lg:grid-cols-2 gap-12 items-center">
 
         {/* TEXT */}
         <div>
@@ -38,15 +34,11 @@ const Hero = () => {
           </button>
 
           {/* ADVANTAGES */}
-          <div className="mt-12">
-            {/* Заголовок */}
+          <div className="mt-10">
             <h2 className="text-3xl font-light text-gray-900 text-center lg:text-left mb-8">
               Чому обирають нас?
             </h2>
-
-            {/* Блок переваг */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto lg:mx-0 text-center sm:text-left">
-              {/* Перевага 1 */}
               <div className="flex flex-col items-center sm:items-start">
                 <div className="w-8 h-8 rounded-full bg-[#7ca17a] text-white flex items-center justify-center text-sm">
                   1
@@ -56,8 +48,6 @@ const Hero = () => {
                   Захист товарів під час зберігання та доставки
                 </p>
               </div>
-
-              {/* Перевага 2 */}
               <div className="flex flex-col items-center sm:items-start">
                 <div className="w-8 h-8 rounded-full bg-[#7ca17a] text-white flex items-center justify-center text-sm">
                   2
@@ -67,8 +57,6 @@ const Hero = () => {
                   Завжди готові до замовлення
                 </p>
               </div>
-
-              {/* Перевага 3 */}
               <div className="flex flex-col items-center sm:items-start">
                 <div className="w-8 h-8 rounded-full bg-[#7ca17a] text-white flex items-center justify-center text-sm">
                   3
@@ -82,18 +70,8 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* IMAGE */}
-        <div className="relative flex justify-center lg:justify-end">
-          {/* картинка зникає <1024px */}
-          <div className="hidden lg:block relative">
-            <div className="absolute inset-0 bg-[#678b64]/10 rounded-full blur-2xl scale-90" />
-            <img
-              src={Photo}
-              alt="delivery"
-              className="relative w-[260px] drop-shadow-2xl hover:scale-105 transition duration-500"
-            />
-          </div>
-        </div>
+        
+  
 
       </div>
     </div>
