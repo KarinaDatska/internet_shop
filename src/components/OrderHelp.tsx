@@ -72,7 +72,7 @@ const Help = () => {
                   <img
                     src={checkIcon}
                     alt="check"
-                    className="w-4 h-4 mt-1 flex-shrink-0"
+                    className="w-4 h-4 mt-1 shrink-0"
                   />
                   <span className="text-sm text-gray-600 leading-relaxed">
                     {item}

@@ -1,80 +1,60 @@
 import { useNavigate } from "react-router-dom";
+import fonPhoto from "../assets/fon.png";
 
 
 const Hero = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="relative overflow-hidden bg-gradient-to-b from-[#f6f6f4] to-white">
+    <section className="relative py-12 flex items-center ">
 
-      <div className="relative max-w-7xl mx-auto px-6 py-5 grid lg:grid-cols-2 gap-12 items-center">
+      {/* Background image */}
+      <img
+        src={fonPhoto}
+        alt="background"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
 
-        {/* TEXT */}
-        <div>
-          <span className="inline-block text-[#678b64] uppercase tracking-widest text-xs font-semibold mb-3">
-            Пакувальні рішення
-          </span>
+      {/* Dark gradient overlay */}
+      <div className="absolute inset-0 bg-linear-to-r from-black/50 via-black/30 to-transparent"></div>
 
-          <h1 className="text-[44px] font-bold leading-tight text-gray-900">
-            Все для вашого бізнесу, <br />
-            <span className="text-[#678b64]">коли важлива кожна деталь</span>
-          </h1>
+      {/* Content wrapper */}
+      <div className="relative max-w-7xl mx-auto px-3 w-full">
 
-          <div className="w-16 h-1 bg-[#678b64] rounded-full mt-6" />
+        <div className="max-w-3xl">
 
-          <p className="text-gray-500 mt-6 max-w-md text-lg">
-            Скоч, стрейч, пакети, плівки та інші рішення для стабільної доставки вашого бізнесу
-          </p>
+          {/* Glass card */}
+          <div className="bg-white/5 backdrop-blur-md border border-white/5 shadow-3xl rounded-3xl p-5 md:p-12 ">
 
-          <button
-            onClick={() => navigate("/Catalog")}
-            className="mt-6 px-6 py-3 bg-[#678b64] text-white rounded-full hover:bg-[#41583e] transition-colors"
-          >
-            Перейти в каталог
-          </button>
+            {/* Top text */}
+            <span className=" text-[#9fc69c] uppercase tracking-[0.25em] text-xs font-semibold">
+              Пакувальні рішення
+            </span>
 
-          {/* ADVANTAGES */}
-          <div className="mt-10">
-            <h2 className="text-3xl font-light text-gray-900 text-center lg:text-left mb-8">
-              Чому обирають нас?
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto lg:mx-0 text-center sm:text-left">
-              <div className="flex flex-col items-center sm:items-start">
-                <div className="w-8 h-8 rounded-full bg-[#7ca17a] text-white flex items-center justify-center text-sm">
-                  1
-                </div>
-                <h3 className="mt-2 font-medium">Надійна упаковка</h3>
-                <p className="text-gray-500 text-sm mt-1">
-                  Захист товарів під час зберігання та доставки
-                </p>
-              </div>
-              <div className="flex flex-col items-center sm:items-start">
-                <div className="w-8 h-8 rounded-full bg-[#7ca17a] text-white flex items-center justify-center text-sm">
-                  2
-                </div>
-                <h3 className="mt-2 font-medium">Швидке відвантаження</h3>
-                <p className="text-gray-500 text-sm mt-1">
-                  Завжди готові до замовлення
-                </p>
-              </div>
-              <div className="flex flex-col items-center sm:items-start">
-                <div className="w-8 h-8 rounded-full bg-[#7ca17a] text-white flex items-center justify-center text-sm">
-                  3
-                </div>
-                <h3 className="mt-2 font-medium">Гарантована якість</h3>
-                <p className="text-gray-500 text-sm mt-1">
-                  Перевірені матеріали та майстри
-                </p>
-              </div>
-            </div>
+            <h1 className="text-[49px] md:text-6xl font-bold text-white leading-tight">
+              Все для вашого бізнесу <br />
+              <span className="text-[#9fc69c] -mt-10 text-[45px]">
+                коли важлива кожна деталь
+              </span>
+            </h1>
+
+            <div className="w-20 h-2px bg-[#9fc69c] rounded-full mt-5" />
+
+            <p className="mt-8 text-gray-200 max-w-lg text-base md:text-lg leading-relaxed">
+              Скоч, стрейч, пакети, плівки та інші рішення для стабільної доставки вашого бізнесу
+            </p>
+
+            <button
+              onClick={() => navigate("/Catalog")}
+              className="mt-16 px-8 py-4 bg-[#678b64] hover:bg-[#41583e] text-white rounded-full transition-all duration-300 shadow-lg hover:scale-105"
+            >
+              Перейти в каталог
+            </button>
           </div>
         </div>
-
-        
-  
-
       </div>
-    </div>
+    </section>
+
   );
 };
 
