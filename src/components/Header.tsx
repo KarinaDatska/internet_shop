@@ -10,12 +10,12 @@ const Header = () => {
   const navItems = [
     { label: "Головна", path: "/" },
     { label: "Як зробити замовлення?", path: "/Advice" },
-    { label: "Доставка і оплата", path: "/Delivery" },
+    { label: "Доставка та оплата", path: "/Delivery" },
     { label: "Контакти", path: "/Contacts" },
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur shadow-sm">
+    <header className="sticky top-0 z-50 bg-white/60 backdrop-blur shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 sm:h-20">
 
         {/* Logo */}
@@ -32,7 +32,7 @@ const Header = () => {
             <button
               key={item.label}
               onClick={() => navigate(item.path)}
-              className="relative hover:text-[#4a6d47] transition after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-[#4a6d47] after:transition-all hover:after:w-full"
+              className="relative hover:text-[#4a6d47] transition after:absolute after:-bottom-1 after:left-0 after:h-2px after:w-0 after:bg-[#4a6d47] after:transition-all hover:after:w-full"
             >
               {item.label}
             </button>

@@ -1,11 +1,11 @@
 import Header from "../components/Header";
-import Help from "../components/Help";
+import OrderHelp from "../components/OrderHelp";
 
 const Advice = () => {
   return (
     <div className="bg-[#f6f6f4] min-h-screen">
       <Header />
-      <Help />
+      <OrderHelp />
 
     </div>
   );
