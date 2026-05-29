@@ -1,12 +1,16 @@
-import Header from "../components/Header";
-import Hero from "../components/Hero";
+import Header from "../components/Header"; // adjusted import path
+import Hero from "../components/Hero";   // 🔹 Перевір шлях до Hero
 
-const Home = () => {
+interface PageProps {
+  onOpenCart: () => void;
+}
+
+const Home: React.FC<PageProps> = ({ onOpenCart }) => {
   return (
     <div className="bg-[#f6f6f4] min-h-screen">
-      <Header />
+      {/* 🔹 ОБОВ'ЯЗКОВО передаємо onOpenCart сюди, щоб шапка знала, як відкрити кошик */}
+      <Header onOpenCart={onOpenCart} />
       <Hero />
-
     </div>
   );
 };

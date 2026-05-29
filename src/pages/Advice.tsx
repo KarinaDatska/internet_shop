@@ -1,12 +1,17 @@
+import React from "react";
 import Header from "../components/Header";
 import OrderHelp from "../components/OrderHelp";
 
-const Advice = () => {
+interface PageProps {
+  onOpenCart: () => void;
+}
+
+const Advice: React.FC<PageProps> = ({ onOpenCart }) => {
   return (
     <div className="bg-[#f6f6f4] min-h-screen">
-      <Header />
+      {/* Передаємо проп у Header */}
+      <Header onOpenCart={onOpenCart} />
       <OrderHelp />
-
     </div>
   );
 };
