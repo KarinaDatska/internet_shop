@@ -2,6 +2,7 @@ import shopIcon from "../assets/shopping-cart.png";
 import phoneIcon from "../assets/phone.png";
 import chatIcon from "../assets/chat.png";
 import checkIcon from "../assets/check.png";
+import { Link } from "react-router-dom";
 
 const Help = () => {
   const steps = [
@@ -21,7 +22,9 @@ const Help = () => {
       icon: phoneIcon,
       list: [
         "Зателефонуйте за номером",
-        "Перейдійть на сторінку 'Контакти' і оберіть зручний для Вас варіант",
+        <span key="phone-contact">
+          Перейдіть на сторінку <Link to="/Contacts" className="text-[#678b64] underline">Контакти</Link> і оберіть зручний для Вас варіант
+        </span>,
         "Повідомте менеджеру потрібний товар",
         "Підтвердіть деталі замовлення",
       ],
@@ -31,7 +34,9 @@ const Help = () => {
       icon: chatIcon,
       list: [
         "Напишіть нам у Viber, WhatsApp, Instagram, Telegram",
-        "Перейдійть на сторінку 'Контакти' і оберіть зручний для Вас варіант",
+        <span key="messenger-contact">
+          Перейдіть на сторінку <Link to="/Contacts" className="text-[#678b64] underline">Контакти</Link> і оберіть зручний для Вас варіант
+        </span>,
         "Отримайте консультацію",
         "Підтвердіть замовлення",
       ],

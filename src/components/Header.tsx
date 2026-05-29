@@ -1,11 +1,24 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import shopIcon from "../assets/shopping-cart.png";
 import profilIcon from "../assets/user.png";
 import { useNavigate } from "react-router-dom";
+import { CartContext } from "../context/CartContext";
 
-const Header = () => {
+interface HeaderProps {
+  onOpenCart: () => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ onOpenCart }) => {
   const navigate = useNavigate();
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  
+  // 🔹 Отримуємо дані з нашого розумного кошика
+  const cartContext = useContext(CartContext);
+  const cart = cartContext?.cart;
+
+  // Рахуємо суму та загальну кількість товарів
+  const totalCartPrice = cart ? cart.totalCartPrice : 0;
+  const totalItems = cart ? cart.items.reduce((sum, item) => sum + item.quantity, 0) : 0;
 
   const navItems = [
     { label: "Головна", path: "/" },
@@ -32,30 +45,46 @@ const Header = () => {
             <button
               key={item.label}
               onClick={() => navigate(item.path)}
-              className="relative hover:text-[#4a6d47] transition after:absolute after:-bottom-1 after:left-0 after:h-2px after:w-0 after:bg-[#4a6d47] after:transition-all hover:after:w-full"
+              className="relative hover:text-[#4a6d47] transition after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-[#4a6d47] after:transition-all hover:after:w-full"
             >
               {item.label}
             </button>
           ))}
         </nav>
 
-        {/* Icons + Search */}
+        {/* Icons + Burger */}
         <div className="flex items-center gap-2 sm:gap-4">
-
-          {/* Іконки завжди */}
           <div className="flex items-center gap-2 sm:gap-3">
-            {[shopIcon, profilIcon].map((icon, index) => (
-              <button
-                key={index}
-                className="p-1.5 sm:p-2 rounded-full hover:bg-gray-100 transition"
-              >
+            
+            {/* 🧡 1. Оновлена кнопка кошика у стилі твого референсу */}
+            <button 
+              onClick={onOpenCart}
+              className="flex items-center gap-1.5 sm:gap-2.5 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-sm transition duration-200 text-xs sm:text-sm tracking-wider"
+            >
+              <span>{totalCartPrice} ₴</span>
+              <div className="w-px h-3.5 sm:h-4 bg-white/30" /> {/* Роздільна лінія */}
+              <div className="flex items-center gap-1">
                 <img
-                  src={icon}
-                  alt="icon"
-                  className="w-4 h-4 sm:w-5 sm:h-5"
+                  src={shopIcon}
+                  alt="cart"
+                  className="w-3.5 h-3.5 sm:w-4 sm:h-4 brightness-0 invert" // Робимо чорну іконку білою
                 />
-              </button>
-            ))}
+                <span>{totalItems}</span>
+              </div>
+            </button>
+
+            {/* 👤 2. Кнопка профілю (залишилася без змін) */}
+            <button
+              onClick={() => navigate("/Profile")} // Або куди веде твій профіль
+              className="p-1.5 sm:p-2 rounded-full hover:bg-gray-100 transition border border-gray-100"
+            >
+              <img
+                src={profilIcon}
+                alt="profile"
+                className="w-4 h-4 sm:w-5 sm:h-5"
+              />
+            </button>
+
           </div>
 
           {/* Бургер-меню для <1024px */}
@@ -99,7 +128,7 @@ const Header = () => {
 
       {/* Mobile / Tablet menu <1024px */}
       {menuOpen && (
-        <div className="lg:hidden bg-white shadow-lg">
+        <div className="lg:hidden bg-white shadow-lg border-t border-gray-100">
           <div className="px-4 pt-2 pb-4 space-y-1">
             {navItems.map((item) => (
               <button

@@ -1,21 +1,31 @@
+import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import { CartProvider } from "./context/CartContext";
+import CartDrawer from "./components/cart/CartDrawer";
 import Home from "./pages/Home";
 import Catalog from "./pages/Catalog";
 import Advice from "./pages/Advice";
-import Constants from "./pages/Contacts";
+import Contacts from "./pages/Contacts";
 import Delivery from "./pages/Delivery";
 
 function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/Catalog" element={<Catalog />} />
-      <Route path="/Advice" element={<Advice />} />
-      <Route path="/Delivery" element={<Delivery />} />
-      <Route path="/Contacts" element={<Constants />} />
-      
+  const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
 
-    </Routes>
+  const openCart = () => setIsCartOpen(true);
+  const closeCart = () => setIsCartOpen(false);
+
+  return (
+    <CartProvider>
+      <Routes>
+        <Route path="/" element={<Home onOpenCart={openCart} />} />
+        <Route path="/Catalog" element={<Catalog onOpenCart={openCart} />} />
+        <Route path="/Advice" element={<Advice onOpenCart={openCart} />} />
+        <Route path="/Delivery" element={<Delivery onOpenCart={openCart} />} />
+        <Route path="/Contacts" element={<Contacts onOpenCart={openCart} />} />
+      </Routes>
+
+      <CartDrawer isOpen={isCartOpen} onClose={closeCart} />
+    </CartProvider>
   );
 }
 
