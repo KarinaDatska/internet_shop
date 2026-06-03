@@ -8,7 +8,7 @@ interface PageProps {
 const Home: React.FC<PageProps> = ({ onOpenCart }) => {
   return (
     <div className="bg-[#f6f6f4] min-h-screen">
-      {/* 🔹 ОБОВ'ЯЗКОВО передаємо onOpenCart сюди, щоб шапка знала, як відкрити кошик */}
+    
       <Header onOpenCart={onOpenCart} />
       <Hero />
     </div>

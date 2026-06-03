@@ -7,16 +7,21 @@ export const CartList: React.FC = () => {
 
   if (cart.items.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center h-64 text-gray-400">
-        <p>Ваш кошик порожній</p>
+      <div className="flex flex-col items-center justify-center min-h-62.5 text-gray-400 px-4 text-center">
+        <p className="text-sm sm:text-base">
+          Ваш кошик порожній
+        </p>
       </div>
     );
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3 sm:space-y-4 px-2 sm:px-0">
       {cart.items.map((item) => (
-        <CartItem key={item.productId} item={item} />
+        <CartItem
+          key={item.productId}
+          item={item}
+        />
       ))}
     </div>
   );

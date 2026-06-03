@@ -5,6 +5,8 @@ export interface ProductDto {
   priceRetail: number;      // Роздрібна ціна
   priceOpt: number;         // Оптова ціна
   minOptQuantity: number;   // Мінімальна кількість для оптової ціни
-  imageUrl?: string | null; // Посилання на зображення товару
+  wholesaleRule?: string | null;
+  imageUrl?: string | null;
   category?: string;        // Категорія продукту (наприклад: "скотч", "плівка")
+  unit?: string;
 }
