@@ -9,7 +9,6 @@ interface PageProps {
 const Delivery: React.FC<PageProps> = ({ onOpenCart }) => {
   return (
     <div className="bg-[#f6f6f4] min-h-screen">
-      {/* Передаємо проп у Header */}
       <Header onOpenCart={onOpenCart} />
       <DeliveryHelp />
     </div>

@@ -6,6 +6,8 @@ export interface CartItemDto {
   priceOpt: number;
   quantity: number;
   minOptQuantity: number;
+  wholesaleRule?: string | null;
+  isWholesale: boolean;
   effectivePrice: number;
   totalPrice: number;
 }

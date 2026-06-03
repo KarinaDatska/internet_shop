@@ -14,7 +14,7 @@ const Help = () => {
         "Додайте товар у кошик",
         "Перейдіть до оформлення замовлення",
         "Підтвердіть замовлення",
-        "Після чого Вам зателефонує менеджер впровж пів години"
+        "Після чого Вам зателефонує менеджер впродовж пів години",
       ],
     },
     {
@@ -23,7 +23,14 @@ const Help = () => {
       list: [
         "Зателефонуйте за номером",
         <span key="phone-contact">
-          Перейдіть на сторінку <Link to="/Contacts" className="text-[#678b64] underline">Контакти</Link> і оберіть зручний для Вас варіант
+          Перейдіть на сторінку{" "}
+          <Link
+            to="/Contacts"
+            className="text-[#678b64] underline"
+          >
+            Контакти
+          </Link>{" "}
+          і оберіть зручний для Вас варіант
         </span>,
         "Повідомте менеджеру потрібний товар",
         "Підтвердіть деталі замовлення",
@@ -35,7 +42,14 @@ const Help = () => {
       list: [
         "Напишіть нам у Viber, WhatsApp, Instagram, Telegram",
         <span key="messenger-contact">
-          Перейдіть на сторінку <Link to="/Contacts" className="text-[#678b64] underline">Контакти</Link> і оберіть зручний для Вас варіант
+          Перейдіть на сторінку{" "}
+          <Link
+            to="/Contacts"
+            className="text-[#678b64] underline"
+          >
+            Контакти
+          </Link>{" "}
+          і оберіть зручний для Вас варіант
         </span>,
         "Отримайте консультацію",
         "Підтвердіть замовлення",
@@ -44,42 +58,49 @@ const Help = () => {
   ];
 
   return (
-    <section className="max-w-7xl mx-auto px-6 py-12">
-      <h1 className="text-center text-[#678b64] uppercase tracking-widest text-[30px] font-sans mb-10">
-        Не знаєте як зробити замовлення?<br/><span className="text-black font-semibold">Ми Вам допоможемо!</span>
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+      <h1 className="text-center text-[#678b64] uppercase tracking-wide sm:tracking-widest text-2xl sm:text-3xl lg:text-[30px] font-sans mb-8 sm:mb-10 leading-tight">
+        Не знаєте як зробити замовлення?
+        <br />
+        <span className="text-black font-semibold">
+          Ми Вам допоможемо!
+        </span>
       </h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
         {steps.map((step, index) => (
           <div
             key={index}
-            className="bg-white rounded-2xl border border-[#e5e5e5] p-8 shadow-neutral-600
-                       hover:shadow-lg transition-all duration-300"
+            className="bg-white rounded-2xl border border-[#e5e5e5] p-5 sm:p-6 lg:p-8 hover:shadow-lg transition-all duration-300"
           >
-            {/* Іконка способу */}
-            <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-[#f3f7f2] flex items-center justify-center">
+            {/* Іконка */}
+            <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-5 sm:mb-6 rounded-full bg-[#f3f7f2] flex items-center justify-center">
               <img
                 src={step.icon}
                 alt={step.title}
-                className="w-10 h-10"
+                className="w-8 h-8 sm:w-10 sm:h-10"
               />
             </div>
 
             {/* Назва */}
-            <h2 className="text-center text-lg font-semibold text-[#678b64] uppercase tracking-wide mb-6">
+            <h2 className="text-center text-base sm:text-lg font-semibold text-[#678b64] uppercase tracking-wide mb-5 sm:mb-6">
               {step.title}
             </h2>
 
-            {/* Список кроків */}
-            <ul className="space-y-4">
+            {/* Кроки */}
+            <ul className="space-y-3 sm:space-y-4">
               {step.list.map((item, i) => (
-                <li key={i} className="flex items-start gap-3">
+                <li
+                  key={i}
+                  className="flex items-start gap-3"
+                >
                   <img
                     src={checkIcon}
                     alt="check"
                     className="w-4 h-4 mt-1 shrink-0"
                   />
-                  <span className="text-sm text-gray-600 leading-relaxed">
+
+                  <span className="text-sm sm:text-[15px] text-gray-600 leading-relaxed wrap-break-word">
                     {item}
                   </span>
                 </li>
